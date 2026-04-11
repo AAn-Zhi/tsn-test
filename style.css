@@ -1,0 +1,562 @@
+/* ===== 基础变量 ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #0a0e17;
+    --bg-secondary: #141a26;
+    --bg-tertiary: #1a2332;
+    --accent-blue: #1e88e5;
+    --accent-cyan: #00bcd4;
+    --accent-purple: #7c4dff;
+    --accent-gold: #ffb300;
+    --text-primary: #ffffff;
+    --text-secondary: #b0bec5;
+    --text-muted: #78909c;
+    --border-color: #2c3a4a;
+    --success: #4caf50;
+    --error: #f44336;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+.app {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 20px 16px 40px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== 头部 ===== */
+.header {
+    text-align: center;
+    margin-bottom: 24px;
+    padding-top: 16px;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.title-small {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-muted);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.title-large {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan), var(--accent-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 8px;
+}
+
+/* ===== 容器 ===== */
+.container {
+    background: var(--bg-secondary);
+    border-radius: 24px;
+    padding: 28px 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--border-color);
+    flex: 1;
+}
+
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* ===== 开始界面 ===== */
+.intro-card {
+    margin-bottom: 24px;
+}
+
+.dimension-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    background: var(--bg-tertiary);
+    border-radius: 16px;
+    margin-bottom: 20px;
+}
+
+.dimension-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.dim-label {
+    width: 70px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.dim-bar {
+    flex: 1;
+    height: 6px;
+    background: var(--border-color);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.dim-fill-left {
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+}
+
+.intro-text {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.poster-quote {
+    text-align: center;
+    padding: 24px 16px;
+    border-left: 3px solid var(--accent-blue);
+    margin-bottom: 24px;
+    background: rgba(30, 136, 229, 0.05);
+    border-radius: 0 8px 8px 0;
+}
+
+.quote-text {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    font-style: italic;
+}
+
+.quote-author {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* ===== 按钮 ===== */
+.btn {
+    display: block;
+    width: 100%;
+    padding: 16px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    text-align: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-blue), #1565c0);
+    color: white;
+    box-shadow: 0 4px 12px rgba(30, 136, 229, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(30, 136, 229, 0.4);
+}
+
+.btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--accent-blue);
+}
+
+.btn-secondary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-text {
+    background: transparent;
+    color: var(--text-muted);
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 16px;
+}
+
+.btn-text:hover {
+    color: var(--text-secondary);
+}
+
+.hint {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* ===== 答题界面 ===== */
+.quiz-header {
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    height: 4px;
+    background: var(--border-color);
+    border-radius: 2px;
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.question-counter {
+    text-align: right;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.dimension-indicator {
+    margin-bottom: 20px;
+}
+
+.dim-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(30, 136, 229, 0.15);
+    border-radius: 20px;
+    font-size: 12px;
+    color: var(--accent-cyan);
+    border: 1px solid rgba(30, 136, 229, 0.3);
+}
+
+.question-text {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 32px;
+    line-height: 1.4;
+}
+
+/* ===== 李克特5点量表 ===== */
+.options-container.likert {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 32px;
+}
+
+.likert-option {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.likert-option:hover {
+    background: rgba(30, 136, 229, 0.08);
+    border-color: var(--accent-blue);
+}
+
+.likert-option.selected {
+    background: rgba(30, 136, 229, 0.12);
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 2px rgba(30, 136, 229, 0.15);
+}
+
+.likert-radio {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    margin-right: 16px;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.likert-option.selected .likert-radio {
+    border-color: var(--accent-blue);
+    background: var(--accent-blue);
+    box-shadow: inset 0 0 0 4px var(--bg-tertiary);
+}
+
+.likert-label {
+    flex: 1;
+    font-size: 15px;
+    color: var(--text-secondary);
+}
+
+.likert-option.selected .likert-label {
+    color: var(--text-primary);
+}
+
+.likert-value {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* ===== 导航按钮 ===== */
+.nav-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.nav-buttons .btn {
+    flex: 1;
+}
+
+/* ===== 结果界面 ===== */
+.result-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.result-emoji {
+    font-size: 64px;
+    margin-bottom: 12px;
+}
+
+.result-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan), var(--accent-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.result-subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* ===== 雷达图 ===== */
+.radar-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+    padding: 16px;
+    background: var(--bg-tertiary);
+    border-radius: 16px;
+}
+
+#radarChart {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ===== 维度解读 ===== */
+.dimension-breakdown {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.dim-card {
+    background: var(--bg-tertiary);
+    border-radius: 12px;
+    padding: 14px;
+}
+
+.dim-card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+
+.dim-card-name {
+    color: var(--text-secondary);
+}
+
+.dim-card-value {
+    color: var(--accent-cyan);
+    font-weight: 600;
+}
+
+.dim-card-bar {
+    height: 4px;
+    background: var(--border-color);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.dim-card-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+    border-radius: 2px;
+}
+
+.dim-card-desc {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+/* ===== 角色解读 ===== */
+.character-interpretation {
+    margin-bottom: 24px;
+}
+
+.result-quote {
+    text-align: center;
+    font-size: 15px;
+    color: var(--text-secondary);
+    font-style: italic;
+    padding: 16px;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 16px;
+}
+
+.result-description {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 20px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+/* ===== 次级匹配 ===== */
+.secondary-matches {
+    margin-bottom: 24px;
+    padding: 16px;
+    background: var(--bg-tertiary);
+    border-radius: 12px;
+}
+
+.secondary-title {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.secondary-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.secondary-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+}
+
+.secondary-emoji {
+    font-size: 20px;
+}
+
+.secondary-info {
+    flex: 1;
+}
+
+.secondary-name {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.secondary-match {
+    color: var(--accent-gold);
+    font-size: 12px;
+}
+
+/* ===== 分享区域 ===== */
+.share-section {
+    display: flex;
+    gap: 12px;
+}
+
+.share-section .btn {
+    flex: 1;
+}
+
+/* ===== 脚注 ===== */
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--text-muted);
+    font-size: 11px;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 480px) {
+    .title-large {
+        font-size: 22px;
+    }
+
+    .container {
+        padding: 20px 16px;
+    }
+
+    .question-text {
+        font-size: 18px;
+    }
+
+    .result-title {
+        font-size: 22px;
+    }
+
+    .dimension-breakdown {
+        grid-template-columns: 1fr;
+    }
+
+    .dimension-item {
+        font-size: 11px;
+    }
+
+    .dim-label {
+        width: 60px;
+    }
+}
