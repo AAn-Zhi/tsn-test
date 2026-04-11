@@ -361,7 +361,7 @@ body {
     color: var(--fb-text-light);
 }
 
-/* ===== 计数器 ===== */
+/* ===== 计数器 =====
 .counter-box {
     background: var(--fb-gray);
     border: 1px solid var(--fb-border);
@@ -381,7 +381,7 @@ body {
     font-weight: 700;
     color: var(--harvard-red);
     margin: 0 4px;
-}
+} */
 
 /* ===== 雷达图 ===== */
 .radar-container {
@@ -564,7 +564,7 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .counter-number {
+    /* .counter-number {
         font-size: 22px;
-    }
+    } */
 }
