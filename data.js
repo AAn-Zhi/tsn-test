@@ -3,7 +3,7 @@ const characters = {
     mark: {
         id: 'mark',
         name: 'Mark Zuckerberg',
-        mbti: 'INTJ',
+        // mbti: 'INTJ',
         title: '建筑师 · 系统构建者',
         emoji: '💻',
         quote: '"You\'re not an asshole, Mark. You\'re just trying so hard to be."',
@@ -14,7 +14,7 @@ const characters = {
     eduardo: {
         id: 'eduardo',
         name: 'Eduardo Saverin',
-        mbti: 'ESFJ',
+        // mbti: 'ESFJ',
         title: '执政官 · 忠诚守护者',
         emoji: '🤝',
         quote: '"I was your only friend. You had one friend."',
@@ -25,7 +25,7 @@ const characters = {
     sean: {
         id: 'sean',
         name: 'Sean Parker',
-        mbti: 'ENTP',
+        // mbti: 'ENTP',
         title: '辩论家 · 魅力机会主义者',
         emoji: '🍸',
         quote: '"A million dollars isn\'t cool. You know what\'s cool? A billion dollars."',
@@ -36,7 +36,7 @@ const characters = {
     winklevoss: {
         id: 'winklevoss',
         name: 'Winklevoss 兄弟',
-        mbti: 'ESTJ',
+        // mbti: 'ESTJ',
         title: '总经理 · 传统精英',
         emoji: '🚣',
         quote: '"I\'m 6\'5", 220, and there\'s two of me."',
@@ -47,7 +47,7 @@ const characters = {
     dustin: {
         id: 'dustin',
         name: 'Dustin Moskovitz',
-        mbti: 'ISTJ',
+        // mbti: 'ISTJ',
         title: '物流师 · 沉默的执行者',
         emoji: '⚙️',
         quote: '"When you go fishing, you don\'t catch all the fish."',
@@ -58,7 +58,7 @@ const characters = {
     divya: {
         id: 'divya',
         name: 'Divya Narendra',
-        mbti: 'INFJ',
+        // mbti: 'INFJ',
         title: '提倡者 · 理想主义愿景家',
         emoji: '🎯',
         quote: '"The Harvard Connection is about creating a trusted community."',
@@ -69,10 +69,10 @@ const characters = {
     christy: {
         id: 'christy',
         name: 'Christy Lee',
-        mbti: 'ISFP',
+        // mbti: 'ISFP',//
         title: '探险家 · 自由灵魂',
         emoji: '🎨',
-        quote: '"You better lawyer up, asshole."',
+        quote: '"I need your attention!"',
         description: '你是典型的ISFP型人格——活在当下的艺术家，追求真实的自我表达。你的认知功能组合是 Fi-Se-Ni-Te：主导的内倾情感让你有强烈的个人价值观，辅助的外倾实感让你善于捕捉当下的美和体验。\n\n在社交网络中，你像Christy一样——平时随性洒脱，但触及底线时会爆发出惊人的力量。你不喜欢被规则束缚，按自己的节奏生活。\n\n你的优势：真实自我、审美敏锐、忠于内心。\n你的盲点：可能显得任性、不善长期规划、情绪波动大。',
         dimensions: { IE: -0.5, NS: -0.3, TF: -0.9, AR: -0.4 },
         functionStack: ['Fi', 'Se', 'Ni', 'Te']
@@ -80,7 +80,7 @@ const characters = {
     erica: {
         id: 'erica',
         name: 'Erica Albright',
-        mbti: 'INFP',
+        // mbti: 'INFP',
         title: '调停者 · 敏感的理想主义者',
         emoji: '🌙',
         quote: '"You\'re going to go through life thinking that girls don\'t like you because you\'re a nerd."',
@@ -226,7 +226,7 @@ const questions = [
             { text: '文字为主，偶尔语音', value: -1 },
             { text: '看对象和内容决定', value: 0 },
             { text: '喜欢语音或视频，更直接', value: 1 },
-            { text: '必须面对面，能量才流动', value: 2 }
+            { text: '必须面对面交流', value: 2 }
         ]
     },
     {
@@ -265,7 +265,7 @@ const questions = [
         options: [
             { text: '具体的事实、数据和操作步骤', value: -2 },
             { text: '主要关注实际应用层面', value: -1 },
-            { text: '两者都关注', value: 0 },
+            { text: '各个方面都关注', value: 0 },
             { text: '更关注背后的理论和模式', value: 1 },
             { text: '关注宏观概念、可能性和未来潜力', value: 2 }
         ]
@@ -330,7 +330,7 @@ const questions = [
         options: [
             { text: '具体的事实、名字、日期', value: -2 },
             { text: '偏向具体信息', value: -1 },
-            { text: '差不多', value: 0 },
+            { text: '这些都差不多', value: 0 },
             { text: '偏向整体印象和感觉', value: 1 },
             { text: '整体印象、概念、模式', value: 2 }
         ]
@@ -343,7 +343,7 @@ const questions = [
         options: [
             { text: '描述具体的细节和特征', value: -2 },
             { text: '先细节后整体', value: -1 },
-            { text: '两者都有', value: 0 },
+            { text: '整体和细节都有', value: 0 },
             { text: '先整体印象后细节', value: 1 },
             { text: '用比喻和抽象概念来描述', value: 2 }
         ]
@@ -369,7 +369,7 @@ const questions = [
         options: [
             { text: '对现有事物的精细打磨和优化', value: -2 },
             { text: '渐进式的改良创新', value: -1 },
-            { text: '都喜欢', value: 0 },
+            { text: '各个类型都喜欢', value: 0 },
             { text: '有突破性的新想法', value: 1 },
             { text: '颠覆性的、改变范式的创意', value: 2 }
         ]
@@ -423,7 +423,7 @@ const questions = [
         options: [
             { text: '客观逻辑和数据分析', value: 2 },
             { text: '偏向逻辑分析', value: 1 },
-            { text: '两者平衡', value: 0 },
+            { text: '主观与客观平衡', value: 0 },
             { text: '偏向个人价值观和感受', value: -1 },
             { text: '个人价值观和对他人的影响', value: -2 }
         ]
@@ -536,7 +536,7 @@ const questions = [
         id: 34,
         dimension: 'TF',
         dimensionName: '决策方式',
-        text: '你认为以下哪个更重要？',
+        text: '你认为与人相处因某些原因可能出现冲突时残忍的真相和和谐的关系哪个更重要？',
         options: [
             { text: '真相和正确，即使让人不舒服', value: 2 },
             { text: '真相重要，但要注意方式', value: 1 },
@@ -607,9 +607,9 @@ const questions = [
         options: [
             { text: '完成一个有挑战的项目', value: 2 },
             { text: '达成一个重要的个人目标', value: 1 },
-            { text: '都有满足感', value: 0 },
             { text: '帮助了朋友或家人', value: -1 },
-            { text: '和重要的人度过美好时光', value: -2 }
+            { text: '和重要的人度过美好时光', value: -2 },
+            { text: '这些都有满足感', value: 0 }
         ]
     },
     {
@@ -642,13 +642,13 @@ const questions = [
         id: 42,
         dimension: 'AR',
         dimensionName: '价值驱动',
-        text: '你更害怕哪种情况？',
+        text: '失去世俗的成功和真挚的感情，你更害怕哪种情况？',
         options: [
             { text: '一事无成，没有留下任何东西', value: 2 },
             { text: '无法实现自己的潜力', value: 1 },
-            { text: '两者都怕', value: 0 },
             { text: '失去重要的人', value: -1 },
-            { text: '孤独终老，没有人真正在乎我', value: -2 }
+            { text: '孤独终老，没有人真正在乎我', value: -2 },
+            { text: '两者都怕', value: 0 }
         ]
     },
     {
@@ -672,9 +672,9 @@ const questions = [
         options: [
             { text: '目标明确，有野心', value: 2 },
             { text: '比较有追求', value: 1 },
-            { text: '看情况', value: 0 },
             { text: '重感情，有人情味', value: -1 },
-            { text: '温暖、体贴、重视关系', value: -2 }
+            { text: '温暖、体贴、重视关系', value: -2 },
+            { text: '看情况，不清楚', value: 0 }
         ]
     },
     {
