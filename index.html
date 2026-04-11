@@ -4,63 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>社交人格维度测试 · 你在《社交网络》中的原型</title>
+    <title>The Social Network · 你是什么角色？</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <!-- 代码雨背景层 -->
+    <canvas id="matrixRain" class="matrix-rain"></canvas>
+
     <div class="app">
         <header class="header">
-            <h1 class="title">
-                <span class="title-small">社交人格维度评估</span>
-                <span class="title-large">你在社交网络中的原型</span>
-            </h1>
-            <p class="subtitle">基于MBTI与大五人格框架 · 48题深度测评</p>
+            <div class="fb-brand">
+                <span class="fb-icon">f</span>
+                <h1 class="title">
+                    <span class="title-small">the</span>
+                    <span class="title-large">social network</span>
+                </h1>
+            </div>
+            <p class="subtitle">Which character are you?</p>
         </header>
 
         <main class="container">
             <!-- 开始界面 -->
             <div id="startScreen" class="screen active">
                 <div class="intro-card">
-                    <div class="dimension-preview">
-                        <div class="dimension-item">
-                            <span class="dim-label">能量来源</span>
-                            <div class="dim-bar">
-                                <div class="dim-fill-left"></div>
-                            </div>
-                            <span>内向 · 外向</span>
-                        </div>
-                        <div class="dimension-item">
-                            <span class="dim-label">信息处理</span>
-                            <div class="dim-bar">
-                                <div class="dim-fill-left"></div>
-                            </div>
-                            <span>直觉 · 实感</span>
-                        </div>
-                        <div class="dimension-item">
-                            <span class="dim-label">决策方式</span>
-                            <div class="dim-bar">
-                                <div class="dim-fill-left"></div>
-                            </div>
-                            <span>思考 · 情感</span>
-                        </div>
-                        <div class="dimension-item">
-                            <span class="dim-label">价值驱动</span>
-                            <div class="dim-bar">
-                                <div class="dim-fill-left"></div>
-                            </div>
-                            <span>成就 · 关系</span>
-                        </div>
+                    <div class="punch-line">
+                        <p class="line1">"You don't get to 500 million friends</p>
+                        <p class="line2">without making a few enemies."</p>
                     </div>
-                    <p class="intro-text">48道题，从四个维度描绘你的社交人格画像。<br>答案没有对错，请根据第一反应选择。</p>
+                    <div class="fb-divider"></div>
+                    <p class="intro-text">
+                        Harvard, 2003. Someone's got an idea.<br>
+                        Someone's got the code.<br>
+                        Someone's about to get screwed.<br>
+                        <span class="accent">Which one are you?</span>
+                    </p>
                 </div>
-                <div class="poster-quote">
-                    <p class="quote-text">"You don't get to 500 million friends without making a few enemies."</p>
-                    <p class="quote-author">—— The Social Network</p>
-                </div>
-                <button id="startBtn" class="btn btn-primary">开始深度测评</button>
-                <p class="hint">预计用时 6-8 分钟</p>
+                <button id="startBtn" class="btn btn-fb">Start</button>
+                <p class="hint">48 questions · ~6 min</p>
             </div>
 
             <!-- 答题界面 -->
@@ -69,26 +51,23 @@
                     <div class="progress-bar">
                         <div id="progressFill" class="progress-fill"></div>
                     </div>
-                    <div class="question-counter">
-                        <span id="currentQ">1</span> / <span id="totalQ">48</span>
+                    <div class="quiz-meta">
+                        <span class="question-counter">
+                            <span id="currentQ">1</span>/<span id="totalQ">48</span>
+                        </span>
+                        <span class="dim-tag" id="dimTag">Energy</span>
                     </div>
-                </div>
-
-                <!-- 维度指示器 -->
-                <div class="dimension-indicator" id="dimensionIndicator">
-                    <span class="dim-tag" id="dimTag">能量来源</span>
                 </div>
 
                 <div id="questionText" class="question-text"></div>
 
-                <!-- 李克特5点量表 -->
                 <div id="optionsContainer" class="options-container likert"></div>
 
                 <div class="nav-buttons">
-                    <button id="prevBtn" class="btn btn-secondary" disabled>← 上一题</button>
-                    <button id="nextBtn" class="btn btn-primary" disabled>下一题 →</button>
+                    <button id="prevBtn" class="btn btn-secondary" disabled>← Back</button>
+                    <button id="nextBtn" class="btn btn-fb" disabled>Next →</button>
                 </div>
-                <button id="quitBtn" class="btn btn-text">退出测试</button>
+                <button id="quitBtn" class="btn btn-text">Quit</button>
             </div>
 
             <!-- 结果界面 -->
@@ -99,7 +78,14 @@
                     <p id="resultSubtitle" class="result-subtitle"></p>
                 </div>
 
-                <!-- 维度雷达图 -->
+                <!-- 计数器 -->
+                <div class="counter-box" id="counterBox">
+                    <span class="counter-label">You are the</span>
+                    <span class="counter-number" id="counterNumber">1,247th</span>
+                    <span class="counter-label" id="counterCharacter">Mark</span>
+                </div>
+
+                <!-- 雷达图 -->
                 <div class="radar-container">
                     <canvas id="radarChart" width="300" height="300"></canvas>
                 </div>
@@ -107,24 +93,26 @@
                 <!-- 维度解读 -->
                 <div class="dimension-breakdown" id="dimensionBreakdown"></div>
 
-                <!-- 角色解读 -->
-                <div class="character-interpretation">
+                <!-- 角色台词 -->
+                <div class="character-quote-box">
                     <p id="resultQuote" class="result-quote"></p>
-                    <div id="resultDescription" class="result-description"></div>
                 </div>
+
+                <!-- 角色解读 -->
+                <div id="resultDescription" class="result-description"></div>
 
                 <!-- 次级匹配 -->
                 <div class="secondary-matches" id="secondaryMatches"></div>
 
                 <div class="share-section">
-                    <button id="restartBtn" class="btn btn-secondary">重新测试</button>
-                    <button id="shareBtn" class="btn btn-primary">📤 分享结果</button>
+                    <button id="restartBtn" class="btn btn-secondary">Retake</button>
+                    <button id="shareBtn" class="btn btn-fb">Share</button>
                 </div>
             </div>
         </main>
 
         <footer class="footer">
-            <p>基于心理学框架设计 · 结果仅供自我探索参考</p>
+            <p>© 2004 thefacebook · which character are you?</p>
         </footer>
     </div>
 
