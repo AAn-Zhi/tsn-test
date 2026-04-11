@@ -34,8 +34,8 @@ const elements = {
     dimensionBreakdown: document.getElementById('dimensionBreakdown'),
     secondaryMatches: document.getElementById('secondaryMatches'),
     radarChart: document.getElementById('radarChart'),
-    counterNumber: document.getElementById('counterNumber'),
-    counterCharacter: document.getElementById('counterCharacter')
+    // counterNumber: document.getElementById('counterNumber'),
+    // counterCharacter: document.getElementById('counterCharacter')
 };
 
 // ===== 代码雨效果（修复版）=====
@@ -171,51 +171,51 @@ const SoundEffects = {
 
 // ===== 真实计数器（使用 countapi.xyz）=====
 // ===== 真实计数器（每个角色独立从0开始）=====
-const Counter = {
-    // 使用 localStorage 存储真实计数
-    STORAGE_KEY: 'socialnetwork_real_counts',
+// const Counter = {
+//     // 使用 localStorage 存储真实计数
+//     STORAGE_KEY: 'socialnetwork_real_counts',
 
-    // 获取所有计数
-    getAllCounts() {
-        const stored = localStorage.getItem(this.STORAGE_KEY);
-        if (stored) {
-            return JSON.parse(stored);
-        }
-        // 首次使用，全部从0开始
-        return {
-            mark: 0,
-            eduardo: 0,
-            sean: 0,
-            winklevoss: 0,
-            dustin: 0,
-            divya: 0,
-            christy: 0,
-            erica: 0
-        };
-    },
+//     // 获取所有计数
+//     getAllCounts() {
+//         const stored = localStorage.getItem(this.STORAGE_KEY);
+//         if (stored) {
+//             return JSON.parse(stored);
+//         }
+//         // 首次使用，全部从0开始
+//         return {
+//             mark: 0,
+//             eduardo: 0,
+//             sean: 0,
+//             winklevoss: 0,
+//             dustin: 0,
+//             divya: 0,
+//             christy: 0,
+//             erica: 0
+//         };
+//     },
 
-    // 获取单个角色计数
-    getCount(characterId) {
-        const counts = this.getAllCounts();
-        return counts[characterId] || 0;
-    },
+//     // 获取单个角色计数
+//     getCount(characterId) {
+//         const counts = this.getAllCounts();
+//         return counts[characterId] || 0;
+//     },
 
-    // 增加计数并返回新数值
-    increment(characterId) {
-        const counts = this.getAllCounts();
-        counts[characterId] = (counts[characterId] || 0) + 1;
-        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(counts));
-        return counts[characterId];
-    },
+//     // 增加计数并返回新数值
+//     increment(characterId) {
+//         const counts = this.getAllCounts();
+//         counts[characterId] = (counts[characterId] || 0) + 1;
+//         localStorage.setItem(this.STORAGE_KEY, JSON.stringify(counts));
+//         return counts[characterId];
+//     },
 
-    // 格式化序数词
-    formatOrdinal(num) {
-        if (num === 0) return '1st';  // 第一次测试显示 1st
-        const suffixes = ['th', 'st', 'nd', 'rd'];
-        const v = num % 100;
-        return num + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0]);
-    }
-};
+//     // 格式化序数词
+//     formatOrdinal(num) {
+//         if (num === 0) return '1st';  // 第一次测试显示 1st
+//         const suffixes = ['th', 'st', 'nd', 'rd'];
+//         const v = num % 100;
+//         return num + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0]);
+//     }
+// };
 
 // ===== 辅助函数 =====
 function showScreen(screenName) {
@@ -299,21 +299,12 @@ async function renderResult() {
     const primaryId = state.result.primaryMatch.id;
     const dimScores = state.result.dimensionScores;
 
-    // 计数器：增加并获取新数值
-    const newCount = Counter.increment(primaryId);
-    elements.counterNumber.textContent = Counter.formatOrdinal(newCount);
-    elements.counterCharacter.textContent = primary.name.split(' ')[0];
+    // ===== 计数器：只调用一次 =====
+    // const newCount = Counter.increment(primaryId);
+    // elements.counterNumber.textContent = Counter.formatOrdinal(newCount);
+    // elements.counterCharacter.textContent = primary.name.split(' ')[0];
 
-    try {
-        const newCount = await Counter.increment(primaryId);
-        elements.counterNumber.textContent = Counter.formatOrdinal(newCount);
-    } catch (e) {
-        // 如果 API 失败，显示本地计数
-        const localCount = Counter.incrementLocal(primaryId);
-        elements.counterNumber.textContent = Counter.formatOrdinal(localCount);
-    }
-
-    // 头部
+    // 头部信息
     elements.resultEmoji.textContent = primary.emoji;
     elements.resultTitle.textContent = primary.name;
     elements.resultSubtitle.textContent = `${primary.mbti} · ${primary.title}`;
@@ -329,7 +320,6 @@ async function renderResult() {
     renderSecondaryMatches();
     renderRadarChart(dimScores);
 }
-
 function renderDimensionBreakdown(dimScores) {
     const dims = [
         { key: 'IE', name: 'Energy', left: 'Introvert', right: 'Extrovert' },
